@@ -1,4 +1,3 @@
-
 Random Quotes Generator
 
     fancy-basbousa-15cadd.netlify.app/
