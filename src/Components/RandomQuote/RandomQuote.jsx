@@ -5,11 +5,24 @@ import twitter_icon from '../../assets/twitter.jpg'
 
 const RandomQuote = () => {
 
-    const [quote, setQuote] = useState({
-        text: "lorem",
-        author: "lorem"
+    let quotes = [];
+ 
+    async function loadQuotes() {
+      const response = await fetch("https://type.fit/api/quotes");
+      quotes = await response.json();
+    }
 
+    const [quote, setQuote] = useState({
+        text: "You can observe a lot just by watching.",
+        author: "Yogi Berra"
     })
+
+    const random = () => {
+      const select = quotes[Math.floor(Math.random()*quotes.length)]
+      setQuote(select);
+    }
+
+    loadQuotes();
 
   return (
     <div className='container'>
@@ -18,9 +31,9 @@ const RandomQuote = () => {
        </div>
        <div className="line"></div>
        <div className="bottom">
-        <div className="author">{quote.author}</div>
+        <div className="author">{quote.author.split(",")[0]}</div>
         <div className="icons">
-            <img src={reload_icon} alt="" />
+            <img src={reload_icon} alt=""  onClick={() => {random()}}/>
             <img src={twitter_icon} alt="" />
         </div>
        </div>
