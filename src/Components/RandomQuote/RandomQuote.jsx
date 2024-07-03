@@ -21,6 +21,7 @@ const RandomQuote = () => {
       const select = quotes[Math.floor(Math.random()*quotes.length)]
       setQuote(select);
     }
+    
 
    const twitter = () => {
      window.open(`https://twitter.com/intent/tweet?text=${quote.text} - ${quote.author.split(",")[0]}`)
